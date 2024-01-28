@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f1f1f1;
+  background-image: url('bck1.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#regForm {
+  background-color: #ffffff;
+  margin: 100px auto;
+  font-family: Raleway;
+  padding: 40px;
+  width: 70%;
+  min-width: 300px;
+}
+
+h1 {
+  text-align: center;  
+}
+
+input {
+  padding: 10px;
+  width: 100%;
+  font-size: 17px;
+  font-family: Raleway;
+  border: 1px solid #aaaaaa;
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button {
+  background-color: #250352;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 17px;
+  font-family: Raleway;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #04AA6D;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #eeebeb;
+    background-color: #2f2e58;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 7.3%;
+    
+
+  }
+  
+  li {
+    float: right;
+    border-right: 1px solid #bbb;
+  }
+
+  li a {
+    display: block;
+    color: rgb(255, 251, 251);
+    text-align: center;
+    padding: 15px 15px;
+    text-decoration: none;
+  }
+  footer{
+    background-color: #f4f4f4;
+    text-align: center;
+    position:absolute;
+    padding: 20px;
+    width: 100%;
+    bottom: 0;
+}
+
+
+</style>
+<body>
+  <div id="navigation-placeholder"></div>
+    <script src="navigation.js"></script>
+
+<form id="regForm" method="POST">
+  <h1>Register:</h1>
+ 
+  <div class="tab">Name:
+    <p><input placeholder="First name..." oninput="this.className = ''" name="first_name"></p>
+    <p><input placeholder="Last name..." oninput="this.className = ''" name="last_name"></p>
+  </div>
+  <div class="tab">Contact Info:
+    <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
+    <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+  </div>
+  <div class="tab">Birthday:
+    <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
+    <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
+    <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
+  </div>
+  <div class="tab">Login Info:
+    <p><input placeholder="Username..." oninput="this.className = ''" name="username"></p>
+    <p><input placeholder="Password..." oninput="this.className = ''" name="password" type="password"></p>
+  </div>
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="button" id="prevBtn">Previous</button>
+      <button type="button" id="nextBtn">Next</button>
+      
+    </div>
+  </div>
+  
+  <div style="text-align:center;margin-top:40px;">
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+    <span class="step"></span>
+  </div>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var currentTab = 0;
+    showTab(currentTab);
+
+    document.getElementById("prevBtn").addEventListener("click", function () {
+        moveTab(-1);
+    });
+    document.getElementById("nextBtn").addEventListener("click", function () {
+        if (currentTab === document.getElementsByClassName("tab").length - 1) {
+            submitForm();
+        } else {
+            moveTab(1);
+        }
+    });
+
+    function showTab(n) {
+        var tabs = document.getElementsByClassName("tab");
+        tabs[n].style.display = "block";
+        updateNavigationButtons(n);
+        updateStepIndicator(n);
+    }
+
+    function moveTab(n) {
+        var tabs = document.getElementsByClassName("tab");
+        if (currentTab + n < 0 || currentTab + n >= tabs.length) {
+            return false;
+        }
+
+        if (n === 1 && !validateCurrentTab()) {
+            return false;
+        }
+
+        tabs[currentTab].style.display = "none";
+        currentTab += n;
+        showTab(currentTab);
+    }
+
+    function validateCurrentTab() {
+        var tab = document.getElementsByClassName("tab")[currentTab];
+        var inputs = tab.getElementsByTagName("input");
+        var isValid = true;
+
+        for (var i = 0; i < inputs.length; i++) {
+            if (inputs[i].value === "") {
+                inputs[i].classList.add("invalid");
+                isValid = false;
+            } else {
+                inputs[i].classList.remove("invalid");
+            }
+        }
+
+        if (isValid) {
+            document.getElementsByClassName("step")[currentTab].classList.add("finish");
+        }
+        return isValid;
+    }
+
+    function updateNavigationButtons(n) {
+        document.getElementById("prevBtn").style.display = n === 0 ? "none" : "inline";
+        document.getElementById("nextBtn").innerHTML = n === (document.getElementsByClassName("tab").length - 1) ? "Submit" : "Next";
+    }
+
+    function updateStepIndicator(n) {
+        var steps = document.getElementsByClassName("step");
+        for (var i = 0; i < steps.length; i++) {
+            steps[i].classList.remove("active");
+        }
+        if (n < steps.length) {
+            steps[n].classList.add("active");
+        }
+    }
+
+    function submitForm() {
+        var form = document.getElementById('regForm');
+        var formData = new FormData(form);
+        var formObject = {};
+        formData.forEach(function (value, key) {
+            formObject[key] = value;
+        });
+
+        fetch('http://127.0.0.1:8000/api/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formObject),
+        })
+        .then(function (response) { return response.json(); })
+        .then(function (data) {
+  
+                alert('Registration successful!'); // Replace with Toastr or other notification mechanism
+         
+        })
+        .catch(function (error) {
+            console.error('Error:', error);
+        });
+    }
+});
+
+
+
+</script>
+
+</body>
+<footer>
+  <p>&copy; 2023 HealthCode. All rights reserved.</p>
+  <p><a href="/terms">Terms of Service</a> | <a href="/privacy">Privacy Policy</a></p>
+</footer>
+</html>
+

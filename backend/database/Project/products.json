@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Advil",
+        "image": "advil.webp",
+        "price": 59
+    },
+    {
+        "id": 2,
+        "name": "Allegra",
+        "image": "allegra.png",
+        "price": 75
+    },
+    {
+        "id": 3,
+        "name": "Ibuprofen",
+        "image": "ibuprofen.png",
+        "price": 82
+    },
+    {
+        "id": 4,
+        "name": "Loratadine",
+        "image": "loratadine.png",
+        "price": 39
+    },
+    {
+        "id": 5,
+        "name": "Zyrtec",
+        "image": "zyrtec.png",
+        "price": 11
+    },
+    {
+        "id": 6,
+        "name": "Vitamine B12",
+        "image": "b12.png",
+        "price": 24
+    },
+    
+    
+        {
+            "id": 7,
+            "name": "Fess spray",
+            "image": "fess.webp",
+            "price": 24
+        },
+    
+        {
+            "id": 7,
+            "name": "Sudafed Liquid",
+            "image": "Sudafed-Liquid.png",
+            "price": 24
+        }
+    
+
+
+    ]
+    
+

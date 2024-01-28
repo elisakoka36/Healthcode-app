@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthCode</title>
+    <link rel="icon" type="image/x-icon" href="Healthcode-5.png">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  
+    
+    <style>
+        body {
+            background-image: url('bck1.jpeg');
+            background-repeat: no-repeat;
+            background-size:cover;
+        }
+        .swiper{
+            width: 50%;
+            padding-left: 50px;
+        }
+        .swiper-slide{
+            background-position: left;
+            background-size: 0%;
+            width: 100;
+        }
+        .swiper-slide img {
+           display:flex;
+           width: 50%;
+           
+        
+        }
+
+    </style>
+</head>
+<body id="homeBody">
+  <div id="navigation-placeholder"></div>
+
+    <section class="hero-section">
+     <div class="content">
+         <h1>HealthCode</h1>
+         <p>"Embrace a Healthier Tomorrow with HealthCode 
+            – Your Trusted Partner in Comprehensive Wellness. Nurturing Lives Through Compassionate Care and Cutting-Edge Solutions.
+             Where Health Meets Harmony, and Your Well-being is Our Commitment."
+         </p>
+         <button onclick="document.location='learn.html'"> Learn more </a></button>
+     </div>
+</section>
+
+<!-- <script src="index.js"></script> -->
+<script src="navigation.js"></script>
+
+
+<div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">
+        <img src="http://127.0.0.1:8000/allegra.png" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="http://127.0.0.1:8000/zyrtec.png" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="http://127.0.0.1:8000/loratadine.png" alt="">
+      </div>
+      
+      <div class="swiper-slide">
+        <img src="http://127.0.0.1:8000/ibuprofen.png" alt="">
+      </div>
+      <div class="swiper-slide">
+        <img src="http://127.0.0.1:8000/advil.webp" alt="">
+      </div>
+      
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+ 
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      effect: "coverflow",
+      grabCursor: true,
+      centeredSlides: true,
+      slidesPerView: "auto",
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+      },
+    });
+  </script>
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+        // Check if authToken exists in localStorage
+        const authToken = localStorage.getItem('authToken');
+        console.log(authToken)
+        if (authToken) {
+            // If authToken exists, show the reservations section
+            document.getElementById('reservations').style.display = 'block';
+            document.getElementById('orders').style.display = 'block';
+
+        }
+    });
+  </script>
+</body>
+<footer>
+        <p>&copy; 2023 HealthCode. All rights reserved.</p>
+        <p><a href="/terms">Terms of Service</a> | <a href="/privacy">Privacy Policy</a></p>
+    </footer>
+</html>

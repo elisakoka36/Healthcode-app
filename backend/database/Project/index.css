@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+body{
+    display: flex;
+    justify-content: left;
+    align-items:center;
+    min-height: 100vh;
+    margin: 0;
+
+}
+
+.remember-forgot label input{
+    accent-color: #fff;
+    margin-right: 3px;
+}
+.remember-forgot a{
+    color: #fff;
+    text-decoration: none;
+
+}
+.remember-forgot a:hover{
+    text-decoration: underline;
+
+}
+.wrapper .btn{
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+
+}
+.wrapper .register-link{
+    font-size: 14.5px;
+    text-align: center;
+    margin: 20px 0 15px;
+}
+.register-link p a{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+}
+.register-link p a:hover{
+    text-decoration: underline;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #eeebeb;
+    background-color: #2f2e58;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 7.3%;
+    
+
+  }
+  
+  li {
+    float: right;
+    border-right: 1px solid #bbb;
+  }
+
+  li a {
+    display: block;
+    color: rgb(255, 251, 251);
+    text-align: center;
+    padding: 15px 15px;
+    text-decoration: none;
+  }
+
+  .hero-section{
+      height: 100vh;
+display:flex ;
+align-items: center;
+padding: 0 20px;
+
+  }
+ .hero-section .content {
+     color: #fff;
+     max-width: 1200px;
+     margin: 0 auto;
+
+}
+
+.hero-section .content h1{
+    font-size: 3rem;
+    max-width: 600px;
+    color: #2f2e58;
+}
+.hero-section .content p {
+    font-weight: 500;
+    margin-top: 15px;
+    max-width: 600px;
+    color: #2f2e58;
+
+}
+.hero-section .content button {
+    background-color: rgb(238, 237, 248);
+    outline: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 38px;
+    padding: 12px 30px;
+    border-radius: 6px;
+    cursor: pointer;
+   opacity: 80%;
+}
+
+footer{
+    background-color: #f4f4f4;
+    text-align: center;
+    position:absolute;
+    padding: 20px;
+    width: 100%;
+    bottom: 0;
+}
